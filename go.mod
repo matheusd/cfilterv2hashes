@@ -3,6 +3,8 @@ module github.com/matheusd/cfilterv2hashes
 go 1.13
 
 require (
+	github.com/decred/dcrd/chaincfg/chainhash v1.0.2
+	github.com/decred/dcrd/crypto/blake256 v1.0.0
 	github.com/decred/dcrd/dcrutil/v3 v3.0.0-20200112011755-e3547d0822db
 	github.com/decred/dcrd/gcs/v2 v2.0.0
 	github.com/decred/dcrd/rpcclient/v5 v5.0.0

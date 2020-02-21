@@ -6,7 +6,6 @@
 package main
 
 import (
-	"crypto/sha256"
 	"errors"
 	"fmt"
 	"go/format"
@@ -16,6 +15,8 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/decred/dcrd/chaincfg/chainhash"
+	"github.com/decred/dcrd/crypto/blake256"
 	"github.com/decred/dcrd/dcrutil/v3"
 	"github.com/decred/dcrd/gcs/v2"
 	"github.com/decred/dcrd/rpcclient/v5"
@@ -117,7 +118,7 @@ func main() {
 
 	// Keep track of the hash of the full set of cfilter hashes so other
 	// people can verify them easily.
-	hasher := sha256.New()
+	hasher := blake256.New()
 
 	log.Printf("Generating up to block %d for %s", opts.TargetHeight, network)
 	target := int64(opts.TargetHeight)
@@ -168,7 +169,7 @@ func main() {
 			out.WriteString(fmt.Sprintf("%s", fh.String()))
 
 			totalCFilterSize += int64(len(cf.Bytes()))
-			hasher.Write(fh[:])
+			hasher.Write(cf.Bytes())
 
 			// Report on progress.
 			if (h+int64(i))%10000 == 0 {
@@ -184,7 +185,9 @@ func main() {
 	}
 	fmt.Println(string(formatted))
 
-	log.Printf("SHA-256 of raw data: %x\n", hasher.Sum(nil))
+	var cfsetHash chainhash.Hash
+	cfsetHash.SetBytes(hasher.Sum(nil))
+	log.Printf("Hash of raw data: %s\n", cfsetHash)
 	log.Printf("Total CFilter size: %.2f MiB\n", float64(totalCFilterSize)/1024/1024)
 	log.Printf("Avg CFilter size: %d bytes\n", totalCFilterSize/target)
 

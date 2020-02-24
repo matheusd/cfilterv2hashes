@@ -15,10 +15,10 @@ This data only needs to be generated for blocks prior to the activation of
 given that blocks after its activation already include a commitment to the
 corresponding cfilterv2 in their header.
 
-| Network | Block Height |
-| --- | --- |
-| *TestNet3* | 323328 |
-| *MainNet* | _(vote in progress)_ |
+| Network | Block Height | Preconfigured File |
+| --- | --- | --- |
+| *TestNet3* | 323328 | [testnet-data.bin](testnet-data.bin) |
+| *MainNet* | _(vote in progress)_ | (tba) |
 
 Usage:
 

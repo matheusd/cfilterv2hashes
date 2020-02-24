@@ -23,5 +23,5 @@ corresponding cfilterv2 in their header.
 Usage:
 
 ```shell
-$ go run . -c localhost:19109 -u USER -P PASSWORD -t 323328 --testnet > cfilterv2_testnet3.go
+$ go run . -c localhost:19109 -u USER -P PASSWORD -t 32337 --testnet --progress -b > testnet-data.bin
 ```

@@ -3,11 +3,13 @@ module github.com/matheusd/cfilterv2hashes
 go 1.13
 
 require (
+	github.com/decred/dcrd/blockchain/standalone v1.1.0
 	github.com/decred/dcrd/chaincfg/chainhash v1.0.2
 	github.com/decred/dcrd/crypto/blake256 v1.0.0
 	github.com/decred/dcrd/dcrutil/v3 v3.0.0-20200112011755-e3547d0822db
 	github.com/decred/dcrd/gcs/v2 v2.0.0
 	github.com/decred/dcrd/rpcclient/v5 v5.0.0
+	github.com/decred/dcrd/wire v1.3.0
 	github.com/jessevdk/go-flags v1.4.0
 	github.com/kr/pretty v0.1.0 // indirect
 	github.com/onsi/ginkgo v1.7.0 // indirect
